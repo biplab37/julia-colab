@@ -19,7 +19,7 @@ jobs:
           julia -e 'using Pkg; Pkg.add(["Plots","QuadGK","DataFrames","LaTeXStrings"])'
       - name: Compress packages
         run: |
-          tar -czf packages.tar.gz .julia
+          tar -czf packages.tar.gz $JULIA_HOME.julia
       - name: Upload packages
         uses: actions/upload-artifact@v3
         with:
