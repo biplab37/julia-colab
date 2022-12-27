@@ -17,11 +17,11 @@ jobs:
       - name: Add packages
         run: |
           julia -e 'using Pkg; Pkg.add(["QuadGK"])'
-      - name: Compress packages
+      - name: move the ~/.julia directory
         run: |
-          tar -czf packages.tar.gz ~/.julia
-      - name: Upload packages
-        uses: actions/upload-artifact@v3
-        with:
-          name: packages
-          path: packages.tar.gz
+          mv ~/.julia /home/runner/work/julia-colab/julia-colab/.julia
+        uses: stefanzweifel/git-auto-commit-action@v4
+          with:
+            branch: compiled-packages
+            token: ${{ secrets.GITHUB_TOKEN }}
+      
