@@ -22,8 +22,7 @@ jobs:
           mv ~/.julia /home/runner/work/julia-colab/julia-colab/.julia
       - name: commit to different branch
         uses: stefanzweifel/git-auto-commit-action@v4
-          with:
-            branch: compiled-packages
-            token: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          branch: compiled-packages
       
       
