@@ -16,7 +16,7 @@ jobs:
           version: "1"
       - name: Add packages
         run: |
-          julia -e 'using Pkg; Pkg.add(split(read("../../packages.txt", String), "\n"))'
+          julia -e 'using Pkg; Pkg.add(split(read("../../Package_list.txt", String), "\n"))'
       - name: Compress packages
         run: |
           tar -czf packages.tar.gz .julia
