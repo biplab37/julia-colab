@@ -20,6 +20,7 @@ jobs:
       - name: move the ~/.julia directory
         run: |
           mv ~/.julia /home/runner/work/julia-colab/julia-colab/.julia
+      - name: commit to different branch  
         uses: stefanzweifel/git-auto-commit-action@v4
           with:
             branch: compiled-packages
