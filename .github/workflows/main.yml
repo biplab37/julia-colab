@@ -1,4 +1,27 @@
+name: compile-packages
+
 on:
   push:
     branches:
       - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Julia
+        uses: julia-actions/setup-julia@v1
+        with:
+          version: "1"
+      - name: Add packages
+        run: |
+          julia -e 'using Pkg; Pkg.add(split(read("packages.txt", String), "\n"))'
+      - name: Compress packages
+        run: |
+          tar -czf packages.tar.gz .julia
+      - name: Upload packages
+        uses: actions/upload-artifact@v3
+        with:
+          name: packages
+          path: packages.tar.gz
