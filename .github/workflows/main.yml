@@ -16,10 +16,10 @@ jobs:
           version: "1"
       - name: Add packages
         run: |
-          julia -e 'using Pkg; Pkg.add(["Plots","QuadGK","DataFrames","LaTeXStrings"])'
+          julia -e 'using Pkg; Pkg.add(["QuadGK"])'
       - name: Compress packages
         run: |
-          tar -czf packages.tar.gz $JULIA_HOME.julia
+          tar -czf packages.tar.gz $JULIA_HOME/.julia
       - name: Upload packages
         uses: actions/upload-artifact@v3
         with:
